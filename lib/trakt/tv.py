@@ -2,14 +2,14 @@
 """Interfaces to all of the TV objects offered by the Trakt.tv API"""
 from collections import namedtuple
 from datetime import datetime, timedelta
-from lib.trakt.core import Airs, Alias, Comment, Genre, delete, get
-from lib.trakt.errors import NotFoundException
-from lib.trakt.sync import (Scrobbler, rate, comment, add_to_collection,
+from trakt.core import Airs, Alias, Comment, Genre, delete, get
+from trakt.errors import NotFoundException
+from trakt.sync import (Scrobbler, rate, comment, add_to_collection,
                             add_to_watchlist, add_to_history, remove_from_history,
                             remove_from_collection, remove_from_watchlist, search,
                             checkin_media, delete_checkin)
-from lib.trakt.utils import slugify, extract_ids, airs_date, unicode_safe
-from lib.trakt.people import Person
+from trakt.utils import slugify, extract_ids, airs_date, unicode_safe
+from trakt.people import Person
 
 __author__ = 'Jon Nappi'
 __all__ = ['dismiss_recommendation', 'get_recommended_shows', 'genres',

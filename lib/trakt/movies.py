@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """Interfaces to all of the Movie objects offered by the Trakt.tv API"""
 from collections import namedtuple
-from lib.trakt.core import Alias, Comment, Genre, get, delete
-from lib.trakt.sync import (Scrobbler, comment, rate, add_to_history,
+from trakt.core import Alias, Comment, Genre, get, delete
+from trakt.sync import (Scrobbler, comment, rate, add_to_history,
                             remove_from_history, add_to_watchlist,
                             remove_from_watchlist, add_to_collection,
                             remove_from_collection, search, checkin_media,
                             delete_checkin)
-from lib.trakt.people import Person
-from lib.trakt.utils import slugify, now, extract_ids, unicode_safe
+from trakt.people import Person
+from trakt.utils import slugify, now, extract_ids, unicode_safe
 
 __author__ = 'Jon Nappi'
 __all__ = ['dismiss_recommendation', 'get_recommended_movies', 'genres',
@@ -171,7 +171,7 @@ class Movie(object):
         recent comments returned first.
         """
         # TODO (jnappi) Pagination
-        from lib.trakt.users import User
+        from trakt.users import User
         data = yield (self.ext + '/comments')
         self._comments = []
         for com in data:
@@ -249,7 +249,7 @@ class Movie(object):
     @get
     def watching_now(self):
         """A list of all :class:`User`'s watching a movie."""
-        from lib.trakt.users import User
+        from trakt.users import User
         data = yield self.ext + '/watching'
         users = []
         for user in data:

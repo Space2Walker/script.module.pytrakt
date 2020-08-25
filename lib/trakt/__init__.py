@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """A wrapper for the Trakt.tv REST API"""
 try:
-    from lib.trakt.core import *  # NOQA
+    from trakt.core import *  # NOQA
 except ImportError:
     pass
 

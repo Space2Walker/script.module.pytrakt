@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Interfaces to all of the People objects offered by the Trakt.tv API"""
-from lib.trakt.core import get
-from lib.trakt.sync import search
-from lib.trakt.utils import slugify, extract_ids
+from trakt.core import get
+from trakt.sync import search
+from trakt.utils import slugify, extract_ids
 
 __author__ = 'Jon Nappi'
 __all__ = ['Person', 'ActingCredit', 'CrewCredit', 'Credits', 'MovieCredits',
@@ -191,7 +191,7 @@ class MovieCredits(Credits):
     MEDIA_KEY = 'movie'
 
     def _extract_media(self, media):
-        from lib.trakt.movies import Movie
+        from trakt.movies import Movie
         data = media.get(self.MEDIA_KEY)
         return Movie(**data)
 
@@ -201,6 +201,6 @@ class TVCredits(Credits):
     MEDIA_KEY = 'show'
 
     def _extract_media(self, media):
-        from lib.trakt.tv import TVShow
+        from trakt.tv import TVShow
         data = media.get(self.MEDIA_KEY)
         return TVShow(**data)
