@@ -2,8 +2,8 @@
 """This module contains Trakt.tv sync endpoint support functions"""
 from datetime import datetime
 
-from trakt.core import get, post, delete
-from trakt.utils import slugify, extract_ids, timestamp
+from lib.trakt.core import get, post, delete
+from lib.trakt.utils import slugify, extract_ids, timestamp
 
 __author__ = 'Jon Nappi'
 __all__ = ['Scrobbler', 'comment', 'rate', 'add_to_history',
@@ -165,18 +165,18 @@ def get_search_results(query, search_type=None, slugify_query=False):
         extract_ids(media_item)
         result = SearchResult(media_item['type'], media_item['score'])
         if media_item['type'] == 'movie':
-            from trakt.movies import Movie
+            from lib.trakt.movies import Movie
             result.media = Movie(**media_item.pop('movie'))
         elif media_item['type'] == 'show':
-            from trakt.tv import TVShow
+            from lib.trakt.tv import TVShow
             result.media = TVShow(**media_item.pop('show'))
         elif media_item['type'] == 'episode':
-            from trakt.tv import TVEpisode
+            from lib.trakt.tv import TVEpisode
             show = media_item.pop('show')
             result.media = TVEpisode(show.get('title', None),
                                      **media_item.pop('episode'))
         elif media_item['type'] == 'person':
-            from trakt.people import Person
+            from lib.trakt.people import Person
             result.media = Person(**media_item.pop('person'))
         results.append(result)
 
@@ -236,18 +236,18 @@ def search_by_id(query, id_type='imdb', media_type=None, slugify_query=False):
     results = []
     for d in data:
         if 'episode' in d:
-            from trakt.tv import TVEpisode
+            from lib.trakt.tv import TVEpisode
             show = d.pop('show')
             extract_ids(d['episode'])
             results.append(TVEpisode(show['title'], **d['episode']))
         elif 'movie' in d:
-            from trakt.movies import Movie
+            from lib.trakt.movies import Movie
             results.append(Movie(**d.pop('movie')))
         elif 'show' in d:
-            from trakt.tv import TVShow
+            from lib.trakt.tv import TVShow
             results.append(TVShow(**d.pop('show')))
         elif 'person' in d:
-            from trakt.people import Person
+            from lib.trakt.people import Person
             results.append(Person(**d.pop('person')))
     yield results
 

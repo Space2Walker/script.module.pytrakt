@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Interfaces to all of the Calendar objects offered by the Trakt.tv API"""
 from pprint import pformat
-from trakt.core import get
-from trakt.movies import Movie
-from trakt.tv import TVEpisode
-from trakt.utils import now, airs_date
+from lib.trakt.core import get
+from lib.trakt.movies import Movie
+from lib.trakt.tv import TVEpisode
+from lib.trakt.utils import now, airs_date
 
 __author__ = 'Jon Nappi'
 __all__ = ['Calendar', 'PremiereCalendar', 'MyPremiereCalendar',

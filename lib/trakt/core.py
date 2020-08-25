@@ -15,7 +15,7 @@ from functools import wraps
 from requests.compat import urljoin
 from requests_oauthlib import OAuth2Session
 from datetime import datetime, timedelta
-from trakt import errors
+from lib.trakt import errors
 
 __author__ = 'Jon Nappi'
 __all__ = ['Airs', 'Alias', 'Comment', 'Genre', 'get', 'delete', 'post', 'put',
